@@ -13,8 +13,8 @@ Protocolo:
 - Aquisição:
 - Pré-processamento:
 Padronização de escala: as imagens de cada cartão é redimensionada para um tamanho 800 x 800, utilizando cv2.resize, no intuito de normalizar as proporções para visualização. 
-Conversão de tons de cinza: utilizando o seguinte comando “cv2.cvtColor(...,COLOR_BGR2GRAY)” tornando o processamento mais simples e mais rápido. 
-Binarização: além da alteração da coloração é feito uma binarização dos cartões utilizando um comando “cv2.threshold(..., THRESH_BINARY_INV) isolando as regiões mais escuras como o caso dos triângulos criando uma máscara binária apropriada para os contornos.
+Conversão de tons de cinza: utilizando o seguinte comando `cv2.cvtColor(...,COLOR_BGR2GRAY)` tornando o processamento mais simples e mais rápido. 
+Binarização: além da alteração da coloração é feito uma binarização dos cartões utilizando um comando `cv2.threshold(..., THRESH_BINARY_INV)` isolando as regiões mais escuras como o caso dos triângulos criando uma máscara binária apropriada para os contornos.
 
 - Segmentação:
 Detecção de contornos externos: utilizando o `cv2.findContours` para localização dos objetos presentes na imagem cortada e binarizada. 
