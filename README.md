@@ -1,16 +1,26 @@
-# Estrutura
+# UNIVERSIDADE ESTADUAL DO NORTE DO PARANÁ - UENP 
+## Trabalho do 4º ano da matéria de Computação Gráfica do Curso de Ciência da Computação 
 
-Problema
+Docente: Wellington Della Mura
 
+Discentes: Joana Shizu e Melissa Francielle
+
+## Estrutura do trabalho
+
+* ### Problema
 A partir das imagens de amostragem (498 arquivos) faça um algoritmo de visão computacional capaz de isolar a área do cartão resposta com as marcações (60 questões) e interprete cada marcação (5 alternativas).
 Use o arquivo de respostas para medir a taxa de acertos do seu algoritmo.
 
-Hipótese
+   ![Imagem Ilustrativa](https://d23vy2bv3rsfba.cloudfront.net/listas/1_f5eaa519f168b122b06ae02e55401bee_5804.png)
+                                   (Imagem Ilustrativa)
+* ### Hipótese
 O problema de análise dos cartões de resposta pode ser resolvido utilizando um algoritmo de visão computacional desenvolvido em linguagem Python, sendo capaz de isolar as questões e interpretar as alternativas de cada cartão resposta. O algoritmo será testado por meio da comparação dos resultados obtidos com o arquivo resposta fornecido, permitindo calcular a taxa de acerto. 
 
-Método
-Protocolo:
-- Aquisição:
+* ### Método
+Utilizando um protocolo para padronizar o processamento das imagens de forma que todas as imagens sejam tratadas da mesma forma e garanta o funcionamento do programa para identificar alternativas marcadas no cartão respostas pelos candaditos.
+  * ### Protocolo:
+- Aquisição: foi utilizado um scanner com 300DPI binarizado.
+  
 - Pré-processamento:
 Padronização de escala: as imagens de cada cartão é redimensionada para um tamanho 800 x 800, utilizando cv2.resize, no intuito de normalizar as proporções para visualização. 
 Conversão de tons de cinza: utilizando o seguinte comando `cv2.cvtColor(...,COLOR_BGR2GRAY)` tornando o processamento mais simples e mais rápido. 
@@ -24,9 +34,11 @@ Divisão das colunas: Assim que feito a retificação da imagem é então dividi
 Divisão das linhas: após as colunas de cada cartao de cada candidato ser extraída e armazenada, é feito então a divisão das linhas, todas as 60 questões, que estão divididas nas 3 colunas cortadas do cartão. 
 
 - Interpretação:
+  Para cada grupo calcula-se o **Pixels Brancos**. A bolha (os pixels brancos) com uma razão de ≥ 0,30 e diferença ≥ 0,15 é considerada marcada. Aplicando o Tesseract utilizando a biblioteca  `pytesseract ` para ler as alternativas impressas sendo (A-E), esses resultados são gravados em um arquivo de formato csv dado como  `respostas_candidatos.csv ` no formato  `questão;resposta;candidato `. Os dados foram de suma importância para analisar que dependendo de certas interpretações do algoritmo resultava em outras respostas devido fatores de posicionamento, como os quadrados eram preenchidos, se havia alguma dificuldade de identificar o quadrado.
 
-Experimento
-- Conjunto de dados
+* ### Experimento
+- Conjunto de dados:
+  O conjunto de dados utilizado nesse Trabalho foi uma quantidade de 499 fotos + o arquivo do gabarito em formato CSV fornecido pelo docente responsável. ( `resposta.csv `)
 - Aplicação
 
 * Importantes
