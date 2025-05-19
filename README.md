@@ -35,3 +35,11 @@ Divisão das linhas: após as colunas de cada cartao de cada candidato ser extra
 
 - Interpretação:
   Para cada grupo calcula-se o **Pixels Brancos**. A bolha (os pixels brancos) com uma razão de ≥ 0,30 e diferença ≥ 0,15 é considerada marcada. Aplicando o Tesseract utilizando a biblioteca  `pytesseract ` para ler as alternativas impressas sendo (A-E), esses resultados são gravados em um arquivo de formato csv dado como  `respostas_candidatos.csv ` no formato  `questão;resposta;candidato `. Os dados foram de suma importância para analisar que dependendo de certas interpretações do algoritmo resultava em outras respostas devido fatores de posicionamento, como os quadrados eram preenchidos, se havia alguma dificuldade de identificar o quadrado.
+
+1. [Etapa 1 - OMR: Corte, Filtros e Identificação de Triângulos](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/OMR.py)
+
+2. [Etapa 2 - Verificação das Respostas](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/verificar_respostas.py)
+
+3. [Etapa 3 - Comparação e Análise das Métricas](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/comparar_respostas.py)
+
+
