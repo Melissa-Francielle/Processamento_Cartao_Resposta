@@ -43,5 +43,5 @@ Divisão das linhas: após as colunas de cada cartao de cada candidato ser extra
 3. [Etapa 3 - Comparação e Análise das Métricas](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/comparar_respostas.py)
 
 ## Artigo 
-Para melhor entendimento de como foi realizado a implementação do sistema de processamento de cartões respostas, leia o seguinte artigo:
+Para melhor compreensão da implementação do sistema de processamento de cartões de resposta, recomenda-se a leitura do seguinte artigo:
 [Artigo - Processamento de Cartão Resposta Utilizando Python](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/Artigo_Processamento_de_Cartão_Resposta.pdf)
