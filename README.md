@@ -22,19 +22,15 @@ Utilizando um protocolo para padronizar o processamento das imagens de forma que
 - Aquisição: Os quatrocentos e noventa e nove cartões de resposta foram digitalizados utilizando scanner com resolução de 300 DPI, snedo aplicado a binarização automatica das imagens, resultando em arquivos JPEG preto e branco prontos para o processamneto. Cada imagem está associada a um registro no arquivo CSV contendo o gabarito de respostas, utilizado para validar a extração das próximas etapas.
   
 - Pré-processamento:
-Padronização de escala: as imagens de cada cartão é redimensionada para um tamanho 800 x 800, utilizando cv2.resize, no intuito de normalizar as proporções para visualização. 
-Conversão de tons de cinza: utilizando o seguinte comando `cv2.cvtColor(...,COLOR_BGR2GRAY)` tornando o processamento mais simples e mais rápido. 
-Binarização: além da alteração da coloração é feito uma binarização dos cartões utilizando um comando `cv2.threshold(..., THRESH_BINARY_INV)` isolando as regiões mais escuras como o caso dos triângulos criando uma máscara binária apropriada para os contornos.
+Esta etapa tem como objetivo preparar as imagens adquiridas para as fases subsenquentes melhorando sua qualidade e estrutura para facilitar a análise.as imagens são convertidas para escalas de cinza e, passa pela binarização de Otsu, utilizando o parâmetro
+`cv2.THRESH_BINARY_INV + Otsu`. Além de ser feito uma melhoria nos elementos gráficos da imagem, também é identificado os vértices dos triângulos utilizando a função `_localizar_triangulos()`.
 
 - Segmentação:
-Detecção de contornos externos: utilizando o `cv2.findContours` para localização dos objetos presentes na imagem cortada e binarizada. 
-Classificação dos quatros marcadores: é feito uma verificação de cada triângulo e a região que eles se encontram a partir da margem para rotular onde se encontram os “cantos” de cada triângulo para a próxima parte do processamento.
-Retificação: assim que é encontrado os cantos que apresentam os triângulos do cartão resposta é feito então um reorder, que é calcular uma matriz transformando a perspectiva deixando somente visível a parte que lhe é interessante ao trabalho em questão.
-Divisão das colunas: Assim que feito a retificação da imagem é então dividido em 3 colunas de cada cartão dos candidatos no intuito de tornar mais fácil ao algoritmo de encontrar as questões para somente após essa etapa realizar a análise e depois a verificação da taxa de acerto dos cartões. 
-Divisão das linhas: após as colunas de cada cartao de cada candidato ser extraída e armazenada, é feito então a divisão das linhas, todas as 60 questões, que estão divididas nas 3 colunas cortadas do cartão. 
+Na fase de segmentação, as imagens pré-processadas são analisadas com o objetivo de isolar as regiões relevantes, neste caso, as linhas contendo apenas as questões indiivduais. O cartão de resposta é dividido em três colunas verticais durante o processamento.Em cada coluna, os contornos com formato aproximado de quadrados são identificados por meio da função `_square_contours`. Após a identificação das linhas, cada linha de questão é recortada e salva como um arquivo de imagem.
 
 - Interpretação:
-  Para cada grupo calcula-se o **Pixels Brancos**. A bolha (os pixels brancos) com uma razão de ≥ 0,30 e diferença ≥ 0,15 é considerada marcada. Aplicando o Tesseract utilizando a biblioteca  `pytesseract ` para ler as alternativas impressas sendo (A-E), esses resultados são gravados em um arquivo de formato csv dado como  `respostas_candidatos.csv ` no formato  `questão;resposta;candidato `. Os dados foram de suma importância para analisar que dependendo de certas interpretações do algoritmo resultava em outras respostas devido fatores de posicionamento, como os quadrados eram preenchidos, se havia alguma dificuldade de identificar o quadrado.
+A fase de intepretação é responsável pela analse dos recortes obtidos na etapa da segmentação e extrair a partir disso as alternativas assinaladas em cada questão. As operações realizadas nessa fase correspondem ao módulo de reconhecimento óptico de marcações.Cada questão individual calcula-se o preenchimento no interior (miolo) dos cincos quadrados correspondetes às alternativas. A função `extrair_id_pasta` realiza a extração desse número, possibilitando que as respostas sejam indexadas corretamente.
+\item \textbf{Comparação com Gabarito:} Por fim, as respostas extraidas são comparadas com o gabarito oficial, que está armazenado em um arquivo CSV
 
 1. [Etapa 1 - OMR: Corte, Filtros e Identificação de Triângulos](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/OMR.py)
 
