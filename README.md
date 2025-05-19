@@ -36,7 +36,7 @@ A fase de intepretação é responsável pela analse dos recortes obtidos na eta
 
 2. [Etapa 2 - Verificação das Respostas](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/verificar_respostas.py)
 
-3. [Etapa 3 - Comparação e Análise das Métricas](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/comparar_respostas.py)
+3. [Etapa 3 - Comparação e Análise das Métricas](https://github.com/Melissa-Francielle/Processamento_Cartao_Resposta/blob/main/Artigo_Processamento_de_Cartão_Resposta.pdf)
 
 ## Artigo 
 Para melhor compreensão da implementação do sistema de processamento de cartões de resposta, recomenda-se a leitura do seguinte artigo:
