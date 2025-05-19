@@ -19,7 +19,7 @@ O problema de análise dos cartões de resposta pode ser resolvido utilizando um
 * ### Método
 Utilizando um protocolo para padronizar o processamento das imagens de forma que todas as imagens sejam tratadas da mesma forma e garanta o funcionamento do programa para identificar alternativas marcadas no cartão respostas pelos candaditos.
   * ### Protocolo:
-- Aquisição: foi utilizado um scanner com 300DPI binarizado.
+- Aquisição: Os quatrocentos e noventa e nove cartões de resposta foram digitalizados utilizando scanner com resolução de 300 DPI, snedo aplicado a binarização automatica das imagens, resultando em arquivos JPEG preto e branco prontos para o processamneto. Cada imagem está associada a um registro no arquivo CSV contendo o gabarito de respostas, utilizado para validar a extração das próximas etapas.
   
 - Pré-processamento:
 Padronização de escala: as imagens de cada cartão é redimensionada para um tamanho 800 x 800, utilizando cv2.resize, no intuito de normalizar as proporções para visualização. 
@@ -35,16 +35,3 @@ Divisão das linhas: após as colunas de cada cartao de cada candidato ser extra
 
 - Interpretação:
   Para cada grupo calcula-se o **Pixels Brancos**. A bolha (os pixels brancos) com uma razão de ≥ 0,30 e diferença ≥ 0,15 é considerada marcada. Aplicando o Tesseract utilizando a biblioteca  `pytesseract ` para ler as alternativas impressas sendo (A-E), esses resultados são gravados em um arquivo de formato csv dado como  `respostas_candidatos.csv ` no formato  `questão;resposta;candidato `. Os dados foram de suma importância para analisar que dependendo de certas interpretações do algoritmo resultava em outras respostas devido fatores de posicionamento, como os quadrados eram preenchidos, se havia alguma dificuldade de identificar o quadrado.
-
-* ### Experimento
-- Conjunto de dados:
-  O conjunto de dados utilizado nesse Trabalho foi uma quantidade de 499 fotos + o arquivo do gabarito em formato CSV fornecido pelo docente responsável. ( `resposta.csv `)
-- Aplicação
-
-* Importantes
-  - Taxa de sucesso
-  - Tempo
-  - Memória
-
-# Conclusão
-
